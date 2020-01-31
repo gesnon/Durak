@@ -14,8 +14,6 @@ namespace Logic
 
         public List<Card> Hand { get; set; } = new List<Card>();
 
-        int TrumpValue { get; set; }
-
         public Bot(string name)
         {
             this.Name = name;
@@ -24,6 +22,14 @@ namespace Logic
         public void GetCard(Deck deck)
         {
             Hand.Add(deck.SetCard());
+        }
+
+        public void FillHand(Deck deck)
+        {
+            while (Hand.Count <= 6)
+            {
+                GetCard(deck);
+            }
         }
 
         public Card CheckTrump(Suit suit)

@@ -43,7 +43,7 @@ namespace Logic
         }
 
         private void GetTrump()
-        {
+        {   
             Card firstCard = Cards.First();
 
             Card lastCard = Cards.Last();
