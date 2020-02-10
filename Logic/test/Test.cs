@@ -19,6 +19,11 @@ namespace Logic
             RoundCards.Add(card)
         }
         
+        public void SetAllCard(Bot botDef)
+        {
+            botDef.Hand.AddRange(RoundCards);
+        }
+        
         public void ClearBoard ()
         {
             RoundCards.Clear();
@@ -40,8 +45,5 @@ namespace Logic
             continue;
         }
     }
-    
-        // этот метод надо будет добавить в класс Bot, он будет выкладывать карту на стол
-    public void
-    
+        
 }
