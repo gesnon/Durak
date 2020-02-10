@@ -30,7 +30,16 @@ namespace Logic
         }
     }
     
-    
+    public class CurrentRound_2  // экземпляр этого класс нужно будет реализовать в Game.cs
+    {
+        public Dictionary<Card,Card> RoundCards {get; set;} = new Dictionary <Card,Card>();
+        
+        public CurrentRound()
+        {
+        }
+        
+        public void 
+    }
     
     // этот метод надо будет добавить в класс Bot, он будет удалять карту из руки
     public void DeleteCard (Card card)
@@ -45,5 +54,19 @@ namespace Logic
             continue;
         }
     }
-        
+    
+    // этот метод надо будет добавить в класс Bot, бот кидает карту на стол, в метод передаётся карта, которая опредяется отдельным методом
+        public Card SetCard(Card setCard)
+        {
+            var selectCards = from card in Hand
+                             where card == seTsuit
+                             select card;
+           // var TrumpCard =  selectHand.OrderBy(q => q.Value);
+            return selectCards.FirstOrDefault();
+        }
+    // этот метод надо будет добавить в класс Bot, карта кидается на стол (атака)
+        public void Attack(Dictionary currentRound)
+        {
+            currentRound.Add(SetCard(Card),null)
+        }
 }
