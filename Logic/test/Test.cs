@@ -8,7 +8,7 @@ namespace Logic
 {
     public class CurrentRound  // экземпляр этого класс нужно будет реализовать в Game.cs
     {
-        public List<Card> RoundCards {get; set;} = new List(Card); // это текущая атака/защита (содержить не более 12 карт и обнуляется после успешной атаки/защиты)        
+        public List<Card> RoundCards {get; set;} = new List<Card>; // это текущая атака/защита (содержить не более 12 карт и обнуляется после успешной атаки/защиты)        
        
         public CurrentRound ()
         {        
@@ -17,6 +17,11 @@ namespace Logic
         public void AddCardOnBoard (Card card)
         {
             RoundCards.Add(card)
+        }
+        
+        public void ClearBoard ()
+        {
+            RoundCards.Clear();
         }
     }
     
@@ -36,5 +41,7 @@ namespace Logic
         }
     }
     
+        // этот метод надо будет добавить в класс Bot, он будет выкладывать карту на стол
+    public void
     
 }
