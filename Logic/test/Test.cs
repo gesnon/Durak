@@ -19,7 +19,7 @@ namespace Logic
             RoundCards.Add(card)
         }
         
-        public void SetAllCard(Bot botDef)
+        public void SetAllCard(Bot botDef) // Передаёт все карты боту, который не смог защититься
         {
             botDef.Hand.AddRange(RoundCards);
         }
