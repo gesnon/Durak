@@ -12,6 +12,8 @@ namespace Logic
 
         public List<Bot> Gamers = new List<Bot>();
 
+        public Dictionary<Card,Card> Round = new Dictionary<Card, Card>();
+
         public Game()
         {
             Gamers.Add(new Bot("Бот № 1"));

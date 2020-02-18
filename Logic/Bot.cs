@@ -37,9 +37,10 @@ namespace Logic
             var selectHand = from card in Hand
                              where card.Suit == suit
                              select card;
-            var TrumpCard =  selectHand.OrderBy(q => q.Value);
+            var TrumpCard = selectHand.OrderBy(q => q.Value);
 
             return TrumpCard.FirstOrDefault();
         }
+
     }
 }

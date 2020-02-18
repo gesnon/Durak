@@ -45,8 +45,10 @@
     <Compile Include="Card.cs" />
     <Compile Include="Deck.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameLogic\LowLvLBot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Suit.cs" />
+    <Compile Include="Table.cs" />
     <Compile Include="Value.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
