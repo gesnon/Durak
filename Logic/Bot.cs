@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic.BotLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace Logic
         public bool Attack { get; set; }
 
         public List<Card> Hand { get; set; } = new List<Card>();
+
+        public IBotLogic botLogic { get; set; }
 
         public Bot(string name)
         {
