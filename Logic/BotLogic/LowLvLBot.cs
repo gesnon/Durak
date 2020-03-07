@@ -34,11 +34,18 @@ namespace Logic.GameLogic
 
                 foreach (var card in SetCards)
                 {
-                    bool qqq = round.Any(q => q.Value == SetCard.Value);
+                    //bool qqq = round.Any(q => q.Value == SetCard.Value);
 
-                    if (qqq)
+                    //if (qqq)
+                    //{
+                    //    round.Add(card, null);
+                    //}
+                    foreach(var cardOnTable in round)
                     {
-                        return card;
+                        if(cardOnTable.Key.Value==card.Value || cardOnTable.Value.Value == card.Value)     // дла каждой карты в руке и для каждой карты на столе, если их значения равны, то добавить карту из руки на стол
+                        {
+                            round.Add(card, null);
+                        }
                     }
                 }
             }
@@ -49,33 +56,42 @@ namespace Logic.GameLogic
 
                 foreach (var card in SetCards)
                 {
-                    bool qqq = round.Any(q => q.Value == SetCard.Value);
+                    //bool qqq = round.Any(q => q.Value == SetCard.Value);
 
-                    if (qqq)
+                    //if (qqq)
+                    //{
+                    //    return card;
+                    //}
+                    foreach (var cardOnTable in round)
                     {
-                        return card;
+                        if (cardOnTable.Key.Value == card.Value || cardOnTable.Value.Value == card.Value)     // то же самое что и в условии для количества карт <8
+                        {
+                            round.Add(card, null);
+                        }
                     }
+
                 }
             }
 
             throw new Exception("Произошла странная хуйня !");
         }
 
-        public Card Defence(List<Card> round, List<Card> Hand, Suit suit, Card AttackCard)
+        public void Defence(Dictionary<Card, Card> round, List<Card> Hand, Suit suit, Card AttackCard)
         {
 
             List<Card> SortHand = Hand.OrderBy(q => q.Value).ToList();
 
-            List<Card> SetCards = SortHand.Where(q => q.Suit == AttackCard.Suit && (int)q.Value > (int)AttackCard.Value).ToList(); // попытка покрыть не козырем
+            List<Card> SetCards = SortHand.Where(q => q.Suit == AttackCard.Suit && (int)q.Value > (int)AttackCard.Value).ToList(); // попытка покрыть не козырем  
 
             if (round.Count() < 4)
             {
                 if (SetCards.Count() != 0)
                 {
+                    round.FirstOrDefault(q => q.Key == AttackCard).Value = SetCards.First();   // наверное надо изменить модификатор доступа на public
 
-                    return SetCards.First();
+                    //return SetCards.First();
                 }
-                return null; // Нечем крыть, нужно брать
+                //return null; // Нечем крыть, нужно брать        // не совсем понятно как сделать здесь
             }
 
             if (round.Count() > 8)
@@ -88,11 +104,11 @@ namespace Logic.GameLogic
                 }
                 if (SetCards.Count() != 0)
                 {
-
-                    return SetCards.First();
+                    round.FirstOrDefault(q => q.Key == AttackCard).Value = SetCards.First();   // наверное надо изменить модификатор доступа на public
+                    //return SetCards.First();
                 }
 
-                return null; // нечем крыть, нужно брать
+                //return null; // нечем крыть, нужно брать         // не совсем понятно как сделать здесь
             }
 
             //если количество карт на столе (5-8)
@@ -103,11 +119,11 @@ namespace Logic.GameLogic
             }
             if (SetCards.Count() != 0)
             {
-
-                return SetCards.First();
+                round.FirstOrDefault(q => q.Key == AttackCard).Value = SetCards.First();   // наверное надо изменить модификатор доступа на public
+                //return SetCards.First();
             }
 
-            return null; // нечем крыть, нужно брать
+            //return null; // нечем крыть, нужно брать              // не совсем понятно как сделать здесь
 
         }
 
